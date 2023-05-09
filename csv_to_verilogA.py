@@ -19,10 +19,8 @@ def convertOutputToDecimal(value):
 
 def rename(name):
     # rename the Filed Name
-    if ('SDSPLLID_') in name:
-        return name.replace('SDSPLLID_', '')
-    if ('SDSPHYID_') in name:
-        return name.replace('SDSPHYID_', '')
+    if ('TEST_') in name:
+        return name.replace('TEST_', '')
     return name
 
 
