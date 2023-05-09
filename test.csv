@@ -1,0 +1,275 @@
+#Name,Filed Name,Width,Direction,Type,Default,Scan Mode,Disable Scan,Bist/OCC mode,Spectial DFT Control,Description
+#Register_SDS,,,,,,,,,,
+##SDSPLLID_ATEST0,,,,,,,,,,
+[15:13],SDSPLLID_TR,3,ID,WR,0x0,0x0,,,,
+[12:9],SDSPLLID_TE_BLK_SDS,4,ID,WR,0x0,0x0,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+##SDSPLLID_AZCAL0,,,,,,,,,,
+[15],SDSPLLID_CAL_AZCMPOUT,1,OD,RD,0X1,0X1,Y,0X1,,auto-zero comparator output
+[14],SDSPLLID_CAL_AZB,1,ID,WR,0X0,0X0,Y,0X0,,auto-zero start signal
+[13:11],SDSPLLID_AZSEL,3,ID,WR,0X0,0X0,Y,0X0,,auto-zero input selection
+[10:8],SDSPLLID_AZ_IN_SEL,3,ID,WR,0X2,0X2,Y,0X2,,"Calibration icc current selection (0:2mA,1:3mA,2:4mA,3:5mA)"
+[7:5],SDSPLLID_RCALPG_B,3,ID,WR,0X4,0X4,Y,0X4,,"Calibration ipp current selection (0:IO_PCAL,1:STX_PCAL,2:IO_NCAL,3:STX_NCAL,4 and above: power down)"
+[4:2],SDSPLLID_RCAL_BR_SEL,3,ID,WR,0X0,0X0,Y,0X0,,Calibration icc/ipp current path selection
+[1],SDSPLLID_PU_AZCOMP,1,ID,WR,0X0,0X0,Y,0X0,,Power up auto-zero comparator
+[0],SDSPLLID_PU_STRCAL,1,ID,WR,0x0,0x0,Y,0x0,,
+,,,,,,,,,,
+##SDSPLLID_PU0,,,,,,,,,,
+[15],SDSPLLID_PU_PLL,1,ID,WR,0x0,0x0,Y,,Calibration,Power up PLL0
+[14],SDSPLLID_PU_PLL_ANA_LDO_CP_VCO,1,ID,WR,0x1,0x1,Y,0x1,,Power up LDO for PLL0 charge pump
+[13],SDSPLLID_PU_ANA_LDO_1P8V_TO_0P9V,1,ID,WR,0x0,0x0,Y,,Calibration,Power up 1.8V to 0.9V master LDO in PLL0 or TRX
+[12],SDSPLLID_COMP_OUT_UP_LMT,1,OD,RD,0x1,N/A,Y,N/A,,VCON upper limitation comparator's output in PLL0
+[11],SDSPLLID_COMP_OUT_LOW_LMT,1,OD,RD,0x1,N/A,Y,N/A,,VCON lower limitation comparator's output in PLL0
+[10],SDSPLLID_PU_ANA_LDO_3P3V_TO_1V,1,ID,WR,0x1,0x1,Y,0x1,,
+[9],SDSPLLID_PU_ANA_LDO_1V_TO_0P9V,1,ID,WR,0x0,0x0,Y,0x1,,
+[8],SDSPLLID_PU_IPP_GEN_SDS,1,ID,WR,0x1,0x1,Y,0x1,,
+##SDSPLLID_CFG0,,,,,,,,,,
+[15],SDSPLLID_PFD_FREEZE_CP_B,1,ID,WR,0x0,0x0,Y,,Calibration,used to freeze CP and make CPOUT high Z in PLL0
+[14],SDSPLLID_PFD_LDO_BIAS_SEL,1,ID,WR,0x0,0x0,Y,0x0,,"config PFD's power supply in PLL0, if 0: 1.1V; if 1: 1V"
+[13],SDSPLLID_LOCKDET_EN,1,ID,WR,0x0,0x0,Y,,Calibration,enable lock detector in PLL0
+[12],SDSPLLID_LOCK_OUT,1,OD,RD,0x0,N/A,Y,N/A,,if 0: PLL is unlocked
+[11:9],SDSPLLID_CP_ISEL,3,ID,WR,0x7,0x7,Y,0x7,,config Charge Pump's current in PLL0
+[8],SDSPLLID_CP_PUB,1,ID,WR,0x1,0x1,Y,0x1,Calibration,enable Charge Pump in PLL0
+[7:6],SDSPLLID_LPF_R1_SEL,2,ID,WR,0x1,0x1,Y,0x1,Calibration,config LPF's R1 in PLL0
+[5:4],SDSPLLID_LPF_C1_SEL,2,ID,WR,0x1,0x1,Y,0x1,Calibration,config LPF's C1 in PLL0
+[3:2],SDSPLLID_REFCLK_DIV_SEL,2,ID,WR,0x0,0x0,Y,0x0,,
+[1:0],SDSPLLID_TO_LVDS_CLK_SEL,2,ID,WR,0x0,0x0,,,,
+,,,,,,,,,,
+##SDSPLLID_CFG1,,,,,,,,,,
+[15:14],SDSPLLID_LPF_C2_SEL,2,ID,WR,0x0,0x0,Y,,Calibration,config LPF's C2 in PLL0
+[13:12],SDSPLLID_LPF_R3_SEL,2,ID,WR,0x0,0x0,Y,0x0,,config LPF's R3 in PLL0
+[11:10],SDSPLLID_LPF_C3_SEL,2,ID,WR,0x0,0x0,Y,,Calibration,config LPF's C3 in PLL0
+[9],SDSPLLID_LPF_VCON_RSTN,1,ID,WR,0x0,0x0,Y,,Calibration,reset VCON to ground in PLL0
+[8],SDSPLLID_DAC_IN_EN,1,ID,WR,0x1,0x1,Y,0x1,,enable DC DAC to VCON
+[7:5],SDSPLLID_VCON_DAC_SEL,3,ID,WR,0x3,0x3,Y,0x3,,select VCON DC when PLL0 is calibrated
+[4],SDSPLLID_VCON_TST_EN,1,ID,WR,0x0,0x0,Y,0x0,,enable VCON to testmux in PLL0
+[3],SDSPLLID_PUB_VCON_BUF,1,ID,WR,0x1,0x1,Y,0x1,Calibration,enable VCON buffer in PLL0
+[2:1],SDSPLLID_SDS_VREF_SEL,2,ID,WR,0x0,0x0,Y,0x0,,
+,,,,,,,,,,
+,,,,,,,,,,
+##SDSPLLID_CFG2,,,,,,,,,,
+[15:7],SDSPLLID_FBDIV_RAT,9,ID,WR,0x4B,0x4B,Y,,Calibration,"config feedback divider's ratio in PLL0: 3.75G mode ratio, 150; 5G mode ratio, 200;"
+[6],SDSPLLID_FBDIV_RSTN,1,ID,WR,0x0,0x0,Y,,Calibration,reset feedback divider in PLL0
+[5],SDSPLLID_PLL_SL_FASTON_B,1,ID,WR,0x0,0x0,Y,0x0,,slow loop's fast power up in PLL0
+[4],SDSPLLID_PLL_AVDD_VCO_TST_EN,1,ID,WR,0x0,0x0,Y,0x0,,enable connecting VCO LDO 1.3V and 0.9V to testmux in PLL0
+[3],SDSPLLID_PLL_VCO_LDO_BIAS_SEL,1,ID,WR,0x0,0x0,Y,0x0,,"config VCO LDO's power supply in PLL0, if 0: 1.1V; if 1: 1.3V"
+[2:0],SDSPLLID_RSVD_CFG2,3,ID,WR,0x0,0x0,Y,0x0,,
+##SDSPLLID_CFG3,,,,,,,,,,
+[15:11],SDSPLLID_VCO_SEL_FF,5,ID,WR,0x0B,0x0B,Y,,Calibration,config VCO feed forward resistance in PLL0
+[10:6],SDSPLLID_VCO_SEL_GM,5,ID,WR,0x0B,0x0B,Y,,Calibration,config VCO GM in PLL0
+[5:1],SDSPLLID_SL_COARSE_CAL,5,ID,WR,0x10,0x10,Y,,Calibration,config VCO LDO's gate bias (coarse mode) in PLL0 slow loop
+[0],SDSPLLID_RSVD_CFG3,1,ID,WR,0x0,0x0,Y,0x0,,
+##SDSPLLID_CFG4,,,,,,,,,,
+[15:11],SDSPLLID_SL_FINE_RES_ODD_SEL,5,ID,WR,0x17,0x17,Y,,Calibration,config highest voltage point of fine resistors in PLL0 slow loop
+[10:5],SDSPLLID_SL_FINE_RES_EVEN_SEL,6,ID,WR,0x16,0x16,Y,,Calibration,config lowest voltage point of fine resistors in PLL0 slow loop
+[4],SDSPLLID_CAL_MODE,1,ID,WR,0x0,0x0,Y,,Calibration,config VCO calibration mode in PLL0
+[3:2],SDSPLLID_VCON_UP_LMT_SEL,2,ID,WR,0x3,0x3,Y,,Calibration,config VCON upper limitation in PLL0
+[1:0],SDSPLLID_VCON_LOW_LMT_SEL,2,ID,WR,0x0,0x0,Y,,Calibration,config VCON lower limitation in PLL0
+##SDSPLLID_CFG5,,,,,,,,,,
+[15:14],SDSPLLID_VREF_CAL_SEL,2,ID,WR,0x1,0x1,Y,0x1,,config VCON in PLL0 VCO calibration
+[13:12],SDSPLLID_SL_LPF_RES_SEL,2,ID,WR,0x0,0x0,Y,0x0,,config VCO LDO LPF's resistance in PLL0
+[11],SDSPLLID_PUB_CLK_TREE,1,ID,WR,0x0,0x0,Y,0x0,,enable CLK TREE in PLL0
+[10],SDSPLLID_PUB_COMP_LMT,1,ID,WR,0x1,0x1,Y,,Calibration,enable VCON's comparator in PLL0
+[9],SDSPLLID_VCO_CAL_EN,1,ID,WR,0x0,0x0,Y,,Calibration,"enable to config VCON (0.65,0.7,0.75,0.8) in PLL0 VCO calibration"
+[8],SDSPLLID_VCO_CAL_BYPASS_ENB,1,ID,WR,0x0,0x0,Y,,Calibration,used for bypassing the hardware vco calibration in PLL0
+[7],SDSPLLID_VCO_CAL_AUTO_BAND_SHIFT_EN,1,ID,WR,0x0,0x0,Y,0x0,,used for enable the automatic shifting of fine cal band in PLL0
+[6],SDSPLLID_VCO_CAL_CLK_SEL,1,ID,WR,0x0,0x0,Y,0x0,,used for selecting the slow or fast clock to vco calibration block in PLL0
+[5],SDSPLLID_VCO_CAL_CLK_RSTN,1,ID,WR,0x0,0x0,Y,,Calibration,used for reseting the clock of vco calibration block in PLL0
+[4],SDSPLLID_REF_CLK_EN_DGLTCH,1,ID,WR,0x0,0x0,Y,0x0,,enable PLL reference clock deglitch
+[3:1],SDSPLLID_REF_CLK_SEL_DGLTCH_WIDTH,3,ID,WR,0x0,0x0,Y,0x0,,select PLL reference clock deglitch width
+[0],SDSPLLID_RSVD_CFG5,1,ID,WR,0x0,0x0,Y,0x0,,
+##SDSPLLID_CFG6,,,,,,,,,,
+[15:10],SDSPLLID_SL_FINE_CAL,6,ID,WR,0x20,0x20,Y,,Calibration,config VCO LDO's gate bias (fine mode) in PLL0
+[9],SDSPLLID_FREQ_MODE_SEL,1,ID,WR,0x0,0x0,Y,0x0,,"PLL0 vco freq. selection: 0, 3.75GHz; 1, 5GHz"
+[8:0],SDSPLLID_RSVD_CFG6,9,ID,WR,0x0,0x0,Y,0x0,,
+,,,,,,,,,,
+,,,,,,,,,,
+##SDSPHYID_PU0,,,,,,,,,,
+[15],SDSPHYID_PU_RX_BUFFER,1,ID,RW,0,,,,,power up rx buffer core
+[14],SDSPHYID_PU_RX_BUFFER_LDO,1,ID,RW,0,,,,,power up rx buffer ldo for core
+[13],SDSPHYID_PU_RX_BUFFER_LDO_DIG,1,ID,RW,0,,,,,power up rx buffer ldo for digital control
+[12:11],SDSPHYID_PU_PI,2,ID,RW,0,,,,,Power up PI<0>--DATA PI and PI<1>-EDGE PI. 00-both off
+[10],SDSPHYID_PU_TX,1,ID,RW,0,,,,,Power up tx regulator
+[9],SDSPHYID_PU_RX_SAMP,1,ID,RW,0,,,,,Power up samplers
+[8],SDSPHYID_TX_SGMII_EN,1,ID,RW,0,,,,,Select SGMII Mode
+[7:6],SDSPHYID_RSVD_PU,2,ID,WR,0x0,0x0,Y,0x0,,RSVD
+,,,,,,,,,,
+##SDSPHYID RX0,,,,,,,,,,
+[15:13],SDSPHYID_RX_BUFFER_RSEL,3,ID,RW,7,,,,,rx buffer gain setting
+[12:9],SDSPHYID_RX_BUFFER_CSEL,4,ID,RW,F,,,,,rx buffer boost setting
+[8:3],SDSPHYID_RX_BUFFER_RTERM,6,ID,RW,1F,,,,,rx 50Ohm terminal tuning code
+[2],SDSPHYID_RX_BUFFER_RCAL_EN,1,ID,RW,0,,,,,
+[1],SDSPHYID_RX_BUFFER_PSW_SEL,1,ID,RW,0,,,,,
+[0],SDSPHYID_RX_BUFFER_SAMP_OSCAL_EN,1,ID,RW,0,,,,,
+,,,,,,,,,,
+##SDSPHYID RX1,,,,,,,,,,
+[15:13],SDSPHYID_RSVD_RX1,3,ID,RW,0x7,,,,,Reserved
+[12],SDSPHYID_RX_DIV_DETOUT,1,OD,RO,,,,,,index of synchronized divider
+[11],SDSPHYID_RX_DIV_SEL_POL,1,ID,RW,0,,,,,"calibration result, SDSPHYID_RX_DIV_SEL_POL=RX_DIV_DETOUT"
+[10],SDSPHYID_RX_CLKDIV,1,ID,RW,0,,,,,"0: 5G clock; 1: div/2, 2.5G clock"
+[9:8],SDSPHYID_RX_BUFFER_BWSEL,2,ID,RW,3,,,,,"0: 500uA, 1: 1mA, 2: 2mA  3:2.5mA"
+[7:4],SDSPHYID_RX_BUFFER_OSCAL,4,ID,RW,7,,,,,rx buffer output offset calibration code
+[3],SDSPHYID_SQ_EN,1,ID,RW,,,,,,
+[2:1],SDSPHYID_SQ_DAC_SEL,2,ID,RW,,,,,,
+[0],SDSPHYID_SQ_CK_REVERSE,1,ID,RW,,,,,,
+,,,,,,,,,,
+##SDSPHYID_TX0,,,,,,,,,,
+[15:13],SDSPHYID_TX_CKREGSEL,3,ID,RW,6,,,,,"TX pre-DRV supply selection (0: 600mV, 1:650mV, 2:700mV, 2:750mV,4: 800mV, 5:850mV, 6:900mV, 7:950mV)"
+[12:10],SDSPHYID_TX_REGSEL,3,ID,RW,6,,,,,"TX Vpp selection (0: 600mV, 1:650mV, 2:700mV, 2:750mV,4: 800mV, 5:850mV, 6:900mV, 7:950mV)"
+[9:8],SDSPHYID_TX_REGBM,2,ID,RW,3,,,,,bias mode of tx regulator
+[7:5],SDSPHYID_TX_RTRIM,3,ID,RW,5,,,,,"Resistance trim target (0: 62.5Ohm, 1:57.5Ohm, 2: 53.8Ohm, 3: 50 Ohm, 4: 47.6 Ohm, 5: 45 Ohm, 6: 42.5 Ohm, 7: 40.4 Ohm)"
+[4:0],SDSPHYID_RSVD_TX0,5,ID,RW,0,,,,,reserved
+,,,,,,,,,,
+##SDSPHYID_TX1,,,,,,,,,,
+[15:11],SDSPHYID_TX_CAL_DRVN_SEL,5,ID,RW,0,,,,,Nside replica impedance setting
+[10:6],SDSPHYID_TX_CAL_DRVP_SEL,5,ID,RW,0,,,,,Pside replica impedance setting
+[5:4],SDSPHYID_TX_IMP_SEL,2,ID,RW,1,,,,,impedance selection in low-z idle mode
+[3:2],SDSPHYID_RSVD_TX1,2,ID,RW,0,,,,,reserved
+[1],SDSPHYID_TX_CALN_EN,1,ID,RW,0,,,,,Nside Calibration enable signal
+[0],SDSPHYID_TX_CALP_EN,1,ID,RW,0,,,,,Pside Calibration enable signal
+,,,,,,,,,,
+##SDSPHYID_TX2,,,,,,,,,,
+[15:11],SDSPHYID_TX_DRVN_SEL,5,ID,RW,C,,,,,Nside impedance setting
+[10:6],SDSPHYID_TX_DRVP_SEL,5,ID,RW,C,,,,,Pside impedance setting
+[5],SDSPHYID_TX_DRVSLEW_EN,1,ID,RW,0,,,,,Slew rate control enable signal
+[4],SDSPHYID_TX_DRV_EN,1,ID,RW,0,,,,,TX Driver enable signal
+[3:2],SDSPHYID_TX_DCC_EN,2,ID,RW,0,,,,,TX Duty Cycle Correction Enable
+[1],SDSPHYID_TX_PATHSEL,1,ID,RW,0,,,,,TX data input mux( 0: input data from digital 1: 1010test mode )
+,,,,,,,,,,
+##SDSPHYID_TX3,,,,,,,,,,
+[15:12],SDSPHYID_TX_DCC_COARSE,4,ID,RW,7,,,,,TX Duty Cycle Correction  coarse RDAC
+[11:6],SDSPHYID_TX_DCC_FINEP,6,ID,RW,1F,,,,,TX Duty Cycle Correction  Pside fine  RDAC
+[5:0],SDSPHYID_TX_DCC_FINEN,6,ID,RW,1F,,,,,TX Duty Cycle Correction  Nside fine  RDAC
+,,,,,,,,,,
+##SDSPHYID_TX4,,,,,,,,,,
+[15:14],SDSPHYID_TX_CLK_SEL,2,ID,RW,0,,,,,"TX input clk selection( 0 for DIV1, 10Gbps ; 1 for DIV2, 5Gbps ; 2 for DIV8, 1.25Gbps ;  3 for off-mode )"
+[13],SDSPHYID_TX_CLK_POWER_SEL,1,ID,RW,1,,,,,TX CLK path VDD selection: 0 for VDD from PAD; 1 for internal regulator
+[12],SDSPHYID_TX_EMP_EN,1,ID,RW,0,,,,,TX emphais enable: 0 for emphasis-off; 1 for emphasis-on
+[11:10],SDSPHYID_TX_EMP_SEL,2,ID,RW,0,,,,,TX emphasis amplitude control: 0~3 for 0/1.2/2.5/4dB
+[9],SDSPHYID_TX_DRV_DUM_EN,1,ID,RW,1,,,,,TX dummy load enable: 0 for dummy-load-off; 1 for dummy-load-on;
+[8:7],SDSPHYID_TX_DRV_DUM_SEL,2,ID,RW,3,,,,,TX dummy load current amplitude control
+[6],SDSPHYID_TX_REGDRV_THREN,1,ID,RW,0,,,,,TX DRV LDO through mode enable: 0 for LDO mode; 1 for LDO bypass mode
+[5],SDSPHYID_TX_CLKLPBK_EN,1,ID,RW,0,,,,,TX CLK loop back mode enable ( 0: mormal mode 1: loopback mode )
+,,,,,,,,,,
+##SDSPHYID_PI0,,,,,,,,,,
+[15:13],SDSPHYID_PI_CLK_VSEL,3,ID,RW,6,,,,,select regulator strength. Default 6 (5G)
+[12:10],SDSPHYID_PI_CBUF_VSEL,3,ID,RW,6,,,,,select regulator strength. Default 6(5G)
+[9:7],SDSPHYID_PI_CORE_VSEL,3,ID,RW,6,,,,,select regulator strength. Default 6 (5G)
+[6:4],SDSPHYID_PI_RSEL,3,ID,RW,6,,,,,select PI resistor load. default 6 for 5G clock
+[3],SDSPHYID_EN_PI_1PXV_THRGH_MODE,1,ID,WR,0x0,0x0,Y,0x0,,
+,,,,,,,,,,
+##SDSPHYID_DEMUX0_PI0,,,,,,,,,,
+[15],SDSPHYID_EN_PI_SLVCORE10,1,ID,RW,1,,,,,enable PI core slave regulator on 1.1V
+[14],SDSPHYID_EN_PI_SLVCORE18,1,ID,RW,0,,,,,enable PI core slave regulator on 1.8V
+[13],SDSPHYID_EN_PI_SLV18,1,ID,RW,0,,,,,enable PI slave regulator on 1.8V
+[12:1],SDSPHYID_RX_DEMUX_RSVD,12,ID,RW,0F,,,,,Reserved
+##SDSPHYID_SAMP0,,,,,,,,,,
+[13:7],SDSPHYID_RX_VOSSELD0,7,ID,RW,0,,,,,select offset voltage for sampler 0. SIGNED 7bit
+[6:0],SDSPHYID_RX_VOSSELD1,7,ID,RW,0,,,,,select offset voltage for sampler 1. SIGNED 7bit
+##SDSPHYID_SAMP1,,,,,,,,,,
+[13:7],SDSPHYID_RX_VOSSELD2,7,ID,RW,0,,,,,select offset voltage for sampler 2. SIGNED 7bit
+[6:0],SDSPHYID_RX_VOSSELD3,7,ID,RW,0,,,,,select offset voltage for sampler 3. SIGNED 7bit
+##SDSPHYID_SAMP2,,,,,,,,,,
+[15],SDSPHYID_EN_ERR_SAMP,1,ID,RW,1,,,,,Enable error sampler
+[14],SDSPHYID_EN_DFE_SAMP,1,ID,RW,1,,,,,Enable speculative sampler for DFE
+[13:7],SDSPHYID_RX_VOSSELDERR0,7,ID,RW,0,,,,,select offset voltage for error sampler 0. SIGNED 7bit
+[6:4],SDSPHYID_RX_SA_DAC_RANGE_VSEL,3,ID,RW,7,,,,,select sampler offset DAC voltage range. 0:7--> 50:400mV in linear mode
+[3:0],SDSPHYID_RO_RGSTR_RSVD,4,OD,RD,0,,,,,read only reserved registers
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+#DataClock,,,,,,,,,,
+##SDSPHYID_RXDATA,,,,,,,,,,
+,SDSPHYID_RX_DATA2DIG0,10,OD,N/A,,,,,,"10-bit Parallel Data ( Tsetup > 100ps, Thold > 100ps ) clock freq is 500MHz"
+,SDSPHYID_RX_DATA2DIG1,10,OD,N/A,,,,,,"10-bit Parallel Data ( Tsetup > 100ps, Thold > 100ps ) clock freq is 500MHz"
+,SDSPHYID_RX_DATA2DIG2,10,OD,N/A,,,,,,"10-bit Parallel Data ( Tsetup > 100ps, Thold > 100ps ) clock freq is 500MHz"
+,SDSPHYID_RX_DATA2DIG3,10,OD,N/A,,,,,,"10-bit Parallel Data ( Tsetup > 100ps, Thold > 100ps ) clock freq is 500MHz"
+,SDSPHYID_RX_EDGE2DIG0,10,OD,N/A,,,,,,"10-bit Parallel Data ( Tsetup > 100ps, Thold > 100ps ) clock freq is 500MHz"
+,SDSPHYID_RX_EDGE2DIG1,10,OD,N/A,,,,,,"10-bit Parallel Data ( Tsetup > 100ps, Thold > 100ps ) clock freq is 500MHz"
+,SDSPHYID_RX_ERR2DIG0,10,OD,N/A,,,,,,"10-bit Parallel Data ( Tsetup > 100ps, Thold > 100ps ) clock freq is 500MHz"
+,SDSPHYID_RX_DEMUXCLK2DIG,1,OCK,N/A,,,,,,250M clock at 5G and 500M clock at 10G
+,,,,,,,,,,
+##SDSPHYID_TXDATA,,,,,,,,,,
+,SDSPHYID_TX_DATA0,20,ID,N/A,,,,,,"20-bit Parallel Data ( Tsetup > 200ps, Thold > 200ps )"
+,SDSPHYID_TX_DATA1,20,ID,N/A,,,,,,"20-bit Parallel Data ( Tsetup > 200ps, Thold > 200ps )"
+,SDSPHYID_TX_CLK2DIG,1,OCK,N/A,,,,,,250M clock at 5G and 500M clock at 10G
+,,,,,,,,,,
+##SDSPHYID_PIDATA,,,,,,,,,,
+,SDSPHYID_PI_DATAD,7,ID,N/A,,,,,,Select data path PI phase at 5G/2.5G
+,SDSPHYID_PI_DATAE,7,ID,N/A,,,,,,Select edge path PI phase at 5G/2.5G
+,SDSPHYID_PI_RESETB,1,ID,N/A,,,,,,Reset PI. 0:reset 1: un-reset
+,,,,,,,,,,
+##SDSPHYID_Squelch,,,,,,,,,,
+,SDSPHYID_SQ_DATA,1,OD,N/A,N/A,N/A,,,,squelch comparator output
+,SDSPHYID_CLK2SQDIG,1,OCK,N/A,N/A,N/A,,,,squelch comparator clock output
+,,,,,,,,,,
+##SDSPHYID_Sampler DATA,,,,,,,,,,
+,SDSPHYID_SAMP_LATCLK,1,ID,N/A,,,,,,Sampler DAC Latch clock
+,,,,,,,,,,
+##SDSPLLID_SCAN,,,,,,,,,,
+,SDSPLLID_PLL_SCAN_CLK,1,ICK,N/A,N/A,N/A,,,,
+,SDSPLLID_PLL_SCAN_EN,1,ID,N/A,N/A,N/A,,,,
+,SDSPLLID_PLL_SCAN_MODE,1,ID,N/A,N/A,N/A,,,,
+,SDSPLLID_PLL_SCAN_RSTN,1,ID,N/A,N/A,N/A,,,,
+,SDSPLLID_PLL_SCAN_OUT,1,LD,N/A,N/A,N/A,,,,
+,SDSPLLID_PLL_SCAN_IN,1,ID,N/A,N/A,N/A,,,,
+,,,,,,,,,,
+##SDSPLLID_MISC,,,,,,,,,,
+,SDSPLLID_SDS_CLKP_REF,1,PIA,N/A,N/A,N/A,,,,
+,SDSPLLID_SDS_CLKM_REF,1,PIA,N/A,N/A,N/A,,,,
+,SDSPLLID_CLK_DIG_25M,1,ICK,N/A,N/A,N/A,,,,
+,SDSPLLID_TRSTN_RTK_TO_DIG,1,OD,N/A,N/A,N/A,,,,
+##SDSPLLID_CLOCK,,,,,,,,,,
+,SDSPLLID_CLK_500M_OCC,1,OCK,N/A,N/A,N/A,N/A,N/A,,
+,,,,,,,,,,
+,,,,,,,,,,
+#PIN,,,,,,,,,,
+##Serdes INOUT,,,,,,,,,,
+,PIN_SRXP_0,1,PIOA,N/A,N/A,N/A,,,,Rx positive input of serdes 0
+,PIN_SRXN_0,1,PIOA,N/A,N/A,N/A,,,,Rx negative input of serdes 0
+,PIN_STXP_0,1,PIOA,N/A,N/A,N/A,,,,Tx positive output of serdes 0
+,PIN_STXN_0,1,PIOA,N/A,N/A,N/A,,,,Tx negative output of serdes 0
+,PIN_SRXP_1,1,PIOA,N/A,N/A,N/A,,,,Rx positive input of serdes 1
+,PIN_SRXN_1,1,PIOA,N/A,N/A,N/A,,,,Rx negative input of serdes 1
+,PIN_STXP_1,1,PIOA,N/A,N/A,N/A,,,,Tx positive output of serdes 1
+,PIN_STXN_1,1,PIOA,N/A,N/A,N/A,,,,Tx negative output of serdes 1
+##Serdes Power,,,,,,,,,,
+,PIN_AVDD11_CLK,1,PIOA,N/A,N/A,N/A,,,,1.1V power supply of serdes
+,PIN_AVDD11_CTLE,1,PIOA,N/A,N/A,N/A,,,,1.1V power supply of serdes
+,PIN_AVDD11_DRV,1,PIOA,N/A,N/A,N/A,,,,1.1V power supply of serdes
+,PIN_AVDD11_TXCLK0,1,PIOA,N/A,N/A,N/A,,,,1.1V power supply of serdes
+,PIN_AVDD11_TXCLK1,1,PIOA,N/A,N/A,N/A,,,,1.1V power supply of serdes
+,PIN_AVDD18_TRX,1,PIOA,N/A,N/A,N/A,,,,1.8V power supply of serdes
+,PIN_AVDD18_PLL,1,PIOA,N/A,N/A,N/A,,,,1.8V power supply of serdes
+,PIN_AVDD33,1,PIOA,N/A,N/A,N/A,,,,3.3V power supply of serdes
+,PIN_AVSS_TX_0,1,PIOA,N/A,N/A,N/A,,,,ground of serdes
+,PIN_AVSS_TX_1,1,PIOA,N/A,N/A,N/A,,,,ground of serdes
+,AVSS_TOP,1,PIOA,N/A,N/A,N/A,,,,ground of serdes
+,AVSS_PLL,1,PIOA,N/A,N/A,N/A,,,,ground of serdes
+,PIN_AVSS_RX,1,PIOA,N/A,N/A,N/A,,,,ground of serdes
+,DVDD,1,PIOA,N/A,N/A,N/A,,,,1.1V power supply of digital
+,DVSS,1,PIOA,N/A,N/A,N/A,,,,ground of digital
+,PIN_TRSTN_RTK,1,PIA,N/A,N/A,N/A,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+#  INTA,,,,,,,,,,
+,POR_PD33,1,PIA,N/A,,,,,,
+,ICC100UP_AZ_RCAL,2,PIA,N/A,,,,,,
+,ICC10UP_AZ_RCAL,1,PIA,N/A,,,,,,
+,IPP100UN_SDS,1,PIA,N/A,,,,,,
+,IPP100UP_FOR_SDS_VREF,1,PIA,N/A,,,,,,
+,IPP200UP,1,POA,N/A,,,,,,
+,,,,,,,,,,
+,LVDS_CLKM,1,POA,N/A,,,,,,
+,LVDS_CLKP,1,POA,N/A,,,,,,
+,PIN_PU_ANA_LDO_3P3V_TO_1P8V_HV,1,PIA,N/A,,,,,,
+,REFCLK_LDO_1P5V_BIAS,1,POA,N/A,,,,,,
+,REFCLK_LDO_1P3V_BIAS,1,POA,N/A,,,,,,
+,REFCLK_LDO_1P1V_BIAS,1,POA,N/A,,,,,,
+,REFCLK_LDO_MASTER_READY_B_HV,1,POA,N/A,,,,,,
+,ATP33,1,POA,N/A,,,,,,
