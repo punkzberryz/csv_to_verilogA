@@ -19,8 +19,10 @@ def convertOutputToDecimal(value):
 
 def rename(name):
     # rename the Filed Name
-    if ('TEST_') in name:
-        return name.replace('TEST_', '')
+    if ('SDSPLLID_') in name:
+        return name.replace('SDSPLLID_', '')
+    if ('SDSPHYID_') in name:
+        return name.replace('SDSPHYID_', '')
     return name
 
 
@@ -37,6 +39,7 @@ with open(verilog_file, "w") as file:
     writeModuleName = ''
     writePorts = ''
     writeSignalsBehaviour = ''
+    writeSetRegs = ''
 
     # Iterate over the rows a third time and write the Verilog-A code
     for row in rows:
@@ -45,33 +48,35 @@ with open(verilog_file, "w") as file:
                 output = convertOutputToDecimal(row["Default"])
                 portName = rename(row["Filed Name"])
                 width = int(row["Width"])
+                paramName = "set_{}".format(portName)
                 if width == 1:
                     portDirection = "output {};\n".format(portName)
                     portDirection += "electrical {};\n".format(portName)
-                    signalBahaviour = "\tV({}) <+ transition({},td,tr,tf);\n".format(
-                        portName, "hi" if output == 1 else "lo")
+                    signalBahaviour = "\tV({}) <+ transition( {} ? hi : lo , td, tr, tf);\n".format(portName,
+                                                                                                    paramName)
                 else:
                     portDirection = "output [{}:0] {};\n".format(
                         width - 1, portName)
                     portDirection += "electrical [{}:0] {};\n".format(
                         width - 1, portName)
-                    signalBahaviour = ''
-                    for i in range(width):
-                        out_bin = format(output, '#0{}b'.format(width+2))[-1-i]
-                        signalBahaviour += "\tV({}[{}]) <+ transition({},td,tr,tf);\n".format(
-                            portName, i, "hi" if out_bin == '1' else "lo")
+                    signalBahaviour = '\tgenerate j({}, 0)\n'.format(width-1)
+                    signalBahaviour += '\t\tV({}[j]) <+ transition ( ({} >> j ) & 1 ? hi : lo, td, tr, tf);\n'.format(
+                        portName, paramName)
                 writeModuleName += '{}, '.format(portName)
                 writePorts += portDirection
+                writeSetRegs += "parameter integer {} = {};\n".format(
+                    paramName, output)
                 writeSignalsBehaviour += signalBahaviour
             except:
                 print('error at {}, value = {}'.format(
                     row["Filed Name"], row["Default"]))
+
     writeModuleName = writeModuleName[:-2]
 
     # start writing verilog-a code
     file.write("{});\n".format(writeModuleName))
     file.write(writePorts)
-
+    file.write(writeSetRegs)
     file.write("\nparameter real td=0 from [0:inf);\n")
     file.write("parameter real tr=10p from [0:inf);\n")
     file.write("parameter real tf=10p from [0:inf);\n")
