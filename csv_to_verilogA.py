@@ -40,6 +40,7 @@ with open(verilog_file, "w") as file:
     writePorts = ''
     writeSignalsBehaviour = ''
     writeSetRegs = ''
+    paramMap = {}
 
     # Iterate over the rows a third time and write the Verilog-A code
     for row in rows:
@@ -64,6 +65,8 @@ with open(verilog_file, "w") as file:
                         portName, paramName)
                 writeModuleName += '{}, '.format(portName)
                 writePorts += portDirection
+                paramMap[portName] = "parameter integer {} = {};\n".format(
+                    paramName, output)
                 writeSetRegs += "parameter integer {} = {};\n".format(
                     paramName, output)
                 writeSignalsBehaviour += signalBahaviour
@@ -76,13 +79,16 @@ with open(verilog_file, "w") as file:
     # start writing verilog-a code
     file.write("{});\n".format(writeModuleName))
     file.write(writePorts)
-    file.write(writeSetRegs)
+
     file.write("\nparameter real td=0 from [0:inf);\n")
     file.write("parameter real tr=10p from [0:inf);\n")
     file.write("parameter real tf=10p from [0:inf);\n")
     file.write("parameter real hi=1.1 from [0:inf);\n")
     file.write("parameter real lo=0 from [0:inf);\n")
+    # file.write(writeSetRegs)
 
+    for name, param in sorted(sorted(paramMap.items())):
+        file.write(param)
     file.write("\nanalog begin\n")
     file.write(writeSignalsBehaviour)
 
